@@ -20,7 +20,7 @@ Plain semantic HTML and one CSS file. No framework, no build step, no third-part
   CNAME                 close1app.zkeldesign.com
   .nojekyll             Tells GitHub Pages to serve files as-is
   robots.txt, sitemap.xml
-  BRIEF.md              Build brief
+  BRIEF.md              Build brief (kept locally, not in the repo)
 ```
 
 Generated files in `images/` (originals are untouched):
