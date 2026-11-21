@@ -276,18 +276,13 @@ a:hover {
 
 /* ---------- Cards ---------- */
 
+/* No backdrop-filter here: the only thing behind a card is the page's smooth
+   vertical gradient, so a blur is invisible, and WebKit blanks blurred layers
+   for a moment every time their width changes (e.g. on window resize). */
 .card {
-  background: var(--surface-solid);
+  background: var(--surface);
   border: 1px solid var(--outline);
   border-radius: var(--radius);
-}
-
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .card {
-    background: var(--surface);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-  }
 }
 
 /* ---------- Hero ---------- */
@@ -314,6 +309,15 @@ a:hover {
   margin-top: 1.25rem;
   max-width: 34rem;
   font-size: calc(var(--step-0) * 1.1);
+  color: var(--text-secondary);
+}
+
+.hero-leagues {
+  margin-top: 0.875rem;
+  font-family: var(--font-small);
+  font-size: var(--step-small);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--text-secondary);
 }
 
