@@ -59,7 +59,10 @@
   --surface: rgb(255 255 255 / 0.9);
   --surface-solid: #fafafa;
   --outline: rgb(20 19 43 / 0.1);
-  --shadow: 0 1.5rem 3rem -1.5rem rgb(41 39 104 / 0.35);
+  /* Hero glow, turned off (see .hero-media::before):
+  --hero-glow: 0.55;
+  --hero-glow-inset: 5% -12%;
+  */
 
   /* Type */
   --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -94,7 +97,10 @@
     --surface: rgb(42 42 51 / 0.6);
     --surface-solid: #1f1e33;
     --outline: rgb(255 255 255 / 0.1);
-    --shadow: 0 1.5rem 3.5rem -1rem rgb(99 230 226 / 0.18);
+    /* Hero glow, turned off (see .hero-media::before):
+    --hero-glow: 0.22;
+    --hero-glow-inset: 15% 20%;
+    */
   }
 }
 
@@ -360,18 +366,20 @@ a:hover {
   justify-self: center;
 }
 
-/* Soft glow behind the phone. The hero PNGs are transparent mockups that
-   already include their own drop shadow, so the image itself gets no box. */
+/* Soft mint glow behind the phone, turned off for now. To bring it back,
+   uncomment this rule and the --hero-glow variables in both :root blocks.
+   Light mode uses the stronger, wider values so the glow shows on white.
 .hero-media::before {
   content: "";
   position: absolute;
-  inset: 15% 20%;
+  inset: var(--hero-glow-inset);
   z-index: -1;
   border-radius: 50%;
   background: var(--decor);
-  opacity: 0.22;
+  opacity: var(--hero-glow);
   filter: blur(60px);
 }
+*/
 
 .hero-media img {
   position: relative;
@@ -379,11 +387,15 @@ a:hover {
   height: var(--hero-phone-h);
 }
 
-/* Raw screenshots for the feature blocks: rounded corners and a soft shadow. */
+/* Feature images: no shadows. Rectangular screenshots get rounded corners. */
 .feature-media img {
   width: 100%;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+}
+
+/* Transparent cutouts already have their own shape, so no rounding. */
+.feature-media--cutout img {
+  border-radius: 0;
 }
 
 /* Side by side: the phone sits flush under the header and the text is centered
@@ -419,10 +431,10 @@ a:hover {
   color: var(--text-secondary);
 }
 
-/* No-ads band */
+/* No-ads statement: set straight on the page background, centered. */
 .band {
-  padding: clamp(1.75rem, 1rem + 3vw, 3rem);
-  border-top: 3px solid var(--decor);
+  padding-block: clamp(1rem, 0.5rem + 2vw, 2rem);
+  text-align: center;
 }
 
 .band h2 {
@@ -433,16 +445,18 @@ a:hover {
 }
 
 .band p {
-  margin-top: 0.75rem;
+  margin: 0.75rem auto 0;
   max-width: 40rem;
   color: var(--text-secondary);
 }
 
-/* Main feature */
+/* Main feature: a card with the accent line, so it leads the feature cards. */
 .feature-main {
   display: grid;
   gap: 2rem;
   align-items: center;
+  padding: clamp(1.5rem, 1rem + 3vw, 3rem);
+  border-top: 3px solid var(--decor);
 }
 
 .feature-main h2 {

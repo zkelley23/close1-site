@@ -88,7 +88,7 @@
 
     <section class="section">
       <div class="container">
-        <div class="band card">
+        <div class="band">
           <h2>No ads. No betting. Just scores.</h2>
           <p>Close 1 doesn't run ads or push sportsbooks. Nothing competes for your attention.</p>
         </div>
@@ -96,15 +96,20 @@
     </section>
 
     <section class="section">
-      <div class="container feature-main">
-        <div>
-          <h2>Quiet until it's close.</h2>
-          <p class="section-text">Fully customizable notifications. Choose by league, by team, or game by game, so you only get the alerts you want.</p>
+      <div class="container">
+        <div class="feature-main card">
+          <div>
+            <h2>Quiet until it's close.</h2>
+            <p class="section-text">Fully customizable notifications. Choose by league, by team, or game by game, so you only get the alerts you want.</p>
+          </div>
+          <div class="feature-media feature-media--cutout">
+            <picture>
+              <source srcset="/images/notifications-dark.png" media="(prefers-color-scheme: dark)" width="1536" height="1228">
+              <img src="/images/notifications-light.png" width="1616" height="1228" loading="lazy"
+                   alt="Close 1 notifications for a close game and a game headed to overtime.">
+            </picture>
+          </div>
         </div>
-        <!-- Image slot: add images/notifications-light.png and -dark.png, then add a
-             <div class="feature-media"><picture>…</picture></div> here with
-             alt="Close 1 notifications for a close game and a game headed to overtime."
-             and loading="lazy". -->
       </div>
     </section>
 
@@ -114,20 +119,35 @@
           <li class="feature-card card">
             <h2>Your teams, front and center.</h2>
             <p>Pick your teams and their games stay up top.</p>
-            <!-- Image slot: images/home-light.png / home-dark.png.
-                 alt="Close 1 Home screen with My Teams games at the top." -->
+            <div class="feature-media feature-media--cutout">
+              <picture>
+                <source srcset="/images/home-dark.png" media="(prefers-color-scheme: dark)" width="1512" height="1192">
+                <img src="/images/home-light.png" width="1496" height="1192" loading="lazy"
+                     alt="Close 1 Home screen with My Teams games at the top.">
+              </picture>
+            </div>
           </li>
           <li class="feature-card card">
             <h2>Scores on your Home Screen.</h2>
             <p>Check the score and schedule without opening the app.</p>
-            <!-- Image slot: images/widgets-light.png / widgets-dark.png.
-                 alt="Close 1 My Teams and Today's Games widgets on an iPhone Home Screen." -->
+            <div class="feature-media">
+              <picture>
+                <source srcset="/images/widget-dark.png" media="(prefers-color-scheme: dark)">
+                <img src="/images/widget-light.png" width="1480" height="1192" loading="lazy"
+                     alt="Close 1 My Teams widget on an iPhone Home Screen showing a final, a live game and an upcoming game.">
+              </picture>
+            </div>
           </li>
           <li class="feature-card card">
             <h2>Everything, one tap away.</h2>
-            <p>Play-by-play, box scores, stats, standings.</p>
-            <!-- Image slot: images/follow-along-light.png / follow-along-dark.png.
-                 alt="Close 1 game details with live plays and player stats." -->
+            <p>Scores, play-by-play, box scores, stats, standings.</p>
+            <div class="feature-media feature-media--cutout">
+              <picture>
+                <source srcset="/images/follow-along-dark.png" media="(prefers-color-scheme: dark)">
+                <img src="/images/follow-along-light.png" width="1480" height="1156" loading="lazy"
+                     alt="Close 1 play-by-play for a college football game: a touchdown pass, a rush and an interception.">
+              </picture>
+            </div>
           </li>
         </ul>
       </div>
