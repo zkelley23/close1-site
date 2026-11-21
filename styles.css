@@ -50,12 +50,13 @@
   --bg-end: #cff4f1;         /* soft mint at the bottom of the page */
   --text: #14132b;
   --text-secondary: #4a4964;
+  --heading: var(--navy);
   --accent: var(--navy);     /* links, pill, text accents */
   --accent-on: #ffffff;
   --focus: var(--navy);
   --decor: var(--mint);      /* glows, borders, dots */
   --live: #ff3b30;
-  --surface: rgb(221 221 221 / 0.15);
+  --surface: rgb(255 255 255 / 0.9);
   --surface-solid: #fafafa;
   --outline: rgb(20 19 43 / 0.1);
   --shadow: 0 1.5rem 3rem -1.5rem rgb(41 39 104 / 0.35);
@@ -80,10 +81,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #201e50;
-    --bg-end: #07061a;
+    --bg: #07061a;             /* near-black at the top, matching the app */
+    --bg-end: #201e50;         /* brand navy at the bottom */
     --text: #ffffff;
     --text-secondary: #c3c2dc;
+    --heading: #ffffff;        /* navy is unreadable on the dark background */
     --accent: #63e6e2;
     --accent-on: #201e50;
     --focus: #63e6e2;
@@ -138,6 +140,7 @@ h1,
 h2,
 h3 {
   margin: 0;
+  color: var(--heading);
   line-height: 1.15;
   text-wrap: balance;
 }
@@ -345,11 +348,12 @@ a:hover {
   color: var(--text-secondary);
 }
 
+/* The mockup is a tall, narrow phone (1350×2760), so it's sized by height,
+   not width. --hero-phone-h is the max height; width follows the aspect ratio. */
 .hero-media {
+  --hero-phone-h: min(36rem, 75svh);
   position: relative;
   justify-self: center;
-  width: 100%;
-  max-width: 30rem;
 }
 
 /* Soft glow behind the phone. The hero PNGs are transparent mockups that
@@ -367,7 +371,8 @@ a:hover {
 
 .hero-media img {
   position: relative;
-  width: 100%;
+  width: auto;
+  height: var(--hero-phone-h);
 }
 
 /* Raw screenshots for the feature blocks: rounded corners and a soft shadow. */
@@ -377,13 +382,20 @@ a:hover {
   box-shadow: var(--shadow);
 }
 
+/* Side by side: the phone sits flush under the header and the text is centered
+   against it. The bottom keeps the standard section gap before the next card. */
 @media (min-width: 55rem) {
+  .hero {
+    padding-block: 0 var(--space);
+  }
+
   .hero .container {
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .hero-media {
-    justify-self: end;
+    --hero-phone-h: clamp(32rem, 80svh, 46rem);
+    justify-self: center;
   }
 }
 
@@ -457,21 +469,7 @@ a:hover {
 }
 
 .feature-card h2 {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.625rem;
   font-size: var(--step-1);
-}
-
-/* Decorative "close game" dot, echoing the app's Close Games card. */
-.feature-card h2::before {
-  content: "";
-  flex: none;
-  width: 0.5rem;
-  height: 0.5rem;
-  margin-top: 0.36em; /* centers the dot on the first line */
-  border-radius: 50%;
-  background: var(--decor);
 }
 
 .feature-card p {
@@ -676,8 +674,7 @@ a:hover {
     border: 1px solid CanvasText;
   }
 
-  .pill::before,
-  .feature-card h2::before {
+  .pill::before {
     forced-color-adjust: none;
     background: CanvasText;
   }

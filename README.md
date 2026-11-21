@@ -25,7 +25,7 @@ Plain semantic HTML and one CSS file. No framework, no build step, no third-part
 
 Generated files in `images/` (originals are untouched):
 
-- `hero-{light,dark}-{640,960}.{webp,png}`: resized hero mockups with transparency kept. The page serves WebP with a PNG fallback through `srcset`.
+- `mockup-{light,dark}-{480,720,960}.{webp,png}`: resized hero mockups (from `mockup-{light,dark}.png`, 1350×2760) with transparency kept. The page serves WebP with a PNG fallback through `srcset`.
 - `favicon.svg`: the C1 monogram. It switches between a white tile (light) and a navy tile (dark) using `prefers-color-scheme`.
 - `favicon-32.png`: PNG favicon fallback.
 
