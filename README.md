@@ -29,6 +29,23 @@ Generated files in `images/` (originals are untouched):
 - `favicon.svg`: the C1 monogram. It switches between a white tile (light) and a navy tile (dark) using `prefers-color-scheme`.
 - `favicon-32.png`: PNG favicon fallback.
 
+### Feature images
+
+Each feature block on the home page has a light and a dark PNG, swapped with a `<picture>` and `prefers-color-scheme`:
+
+| Section | Files | Style |
+| --- | --- | --- |
+| Quiet until it's close. | `notifications-{light,dark}.png` | Cutout |
+| Your teams, front and center. | `home-{light,dark}.png` | Cutout |
+| Scores on your Home Screen. | `widget-{light,dark}.png` | Screenshot |
+| Everything, one tap away. | `follow-along-{light,dark}.png` | Cutout |
+
+- **Cutout** images have transparent backgrounds and use `feature-media feature-media--cutout`, which shows them as-is.
+- **Screenshot** images are full rectangles and use `feature-media`, which rounds the corners.
+- No feature image gets a CSS shadow. Any shadow you see is part of the PNG itself.
+- To replace an image, export it with the same filename. If its pixel size changes, update the `width` and `height` on the `<img>` (and on the dark `<source>`, if the dark file's size differs) so the browser reserves the right space while it loads.
+- The hero's mint glow is turned off. The rule is commented out in `styles.css` (`.hero-media::before` and the `--hero-glow` variables), with instructions for turning it back on.
+
 Paths are root-relative (`/styles.css`), which works because the site is served from the domain root.
 
 ### Wordmark file naming
@@ -86,8 +103,6 @@ Then open <http://localhost:8000>. Python's server doesn't use `404.html` for mi
 | Smart App Banner | Not added | `index.html` `<head>`: the commented `<meta name="apple-itunes-app" content="app-id=APP_STORE_ID">`. Uncomment it and fill in the ID. |
 | Privacy "Last updated" date | October 16, 2026 | `privacy/index.html`, the `<p class="meta">` under the `<h1>`. |
 | Open Graph image | Not present | Add `images/og-image.png` (1200×630), then add the `og:image` and `twitter:image` tags described in the TODO comment in the `index.html` `<head>`. |
-| Feature screenshots | Not present | `index.html` has a commented image slot (with the alt text from the brief) in each feature block. Add the light and dark images and a `<div class="feature-media"><picture>…</picture></div>` with `loading="lazy"`, `width` and `height`. The CSS already styles them, and the main notifications feature switches to two columns when an image is present. |
-
 ## Contrast ratios
 
 Measured from the final tokens in `styles.css` using the WCAG 2.x relative-luminance formula. Card colors are the translucent surface blended over the page background. All text needs 4.5:1; UI components and focus indicators need 3:1.
