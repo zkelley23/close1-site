@@ -98,7 +98,7 @@ Then open <http://localhost:8000>. Python's server doesn't use `404.html` for mi
 | Placeholder | Current state | Where to change it |
 | --- | --- | --- |
 | `SUPPORT_EMAIL` | `zach@zkeldesign.com` | It appears 3 times: `support/index.html` (intro and the "delete my data" answer) and `privacy/index.html` (Contact). A static site has no shared include, so find and replace `zach@zkeldesign.com` across the repository. Note that the privacy policy wording is yours to change. |
-| `TIP_URL` | Not provided, so the tip line is omitted | `index.html`: replace the comment `<!-- TODO(close1): add tip line when TIP_URL is available -->` (end of `<main>`) with `<p class="tip container section">Close 1 is free. If you like it, you can <a href="TIP_URL" rel="noopener noreferrer">leave a tip</a>.</p>`. Keep it on the home page only. |
+| Tip Jar URL | `https://buymeacoffee.com/zkedesign` | It appears in the nav and footer of all four pages, in the home page tip line, and in the Support "Is Close 1 free?" answer. Find and replace the URL across the repository. The link opens in a new tab with `rel="noopener noreferrer"` and hidden "(opens in a new tab)" text. The privacy policy names Buy Me a Coffee in its Tips section, so update that too if the provider changes. |
 | App Store link and badge | "Coming soon" pill | `index.html`: the comment above `<p class="pill">Coming soon</p>` in the hero. Replace the pill with the badge link. Use Apple's official badge artwork, saved into `images/`, with a `<picture>` for the light and dark versions. Then delete the "Coming soon" pill. |
 | Smart App Banner | Not added | `index.html` `<head>`: the commented `<meta name="apple-itunes-app" content="app-id=APP_STORE_ID">`. Uncomment it and fill in the ID. |
 | Privacy "Last updated" date | October 16, 2026 | `privacy/index.html`, the `<p class="meta">` under the `<h1>`. |
@@ -144,8 +144,8 @@ Checked:
 - Structure: one `<h1>` per page, no skipped heading levels, the required landmarks, `aria-current` on the current nav link, alt text on every image, explicit `width`/`height`, targets at least 44px tall.
 - Every page parses as strict HTML5 (html5lib). Every internal link and image path resolves. No duplicate ids.
 - No requests leave the origin. No console errors.
-- No mention of tipping on any page (the tip line is omitted until `TIP_URL` exists).
-- The privacy text matches BRIEF.md Appendix A word for word.
+- The Tip Jar link is in the nav and footer on every page and opens in a new tab. The tip line is on the home page only.
+- The privacy text matches BRIEF.md Appendix A word for word, apart from the Tips section added on November 27, 2026.
 
 Not verified:
 
